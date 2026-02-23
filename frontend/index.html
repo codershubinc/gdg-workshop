@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Full Stack Workshop Registration</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- MODERN FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🚀 Event Registration Form</h1>
+        <p>Register now to secure your spot!</p>
+
+        <form id="registrationForm">
+
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="name" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" id="phone" placeholder="Enter phone number" required>
+            </div>
+
+            <div class="form-group">
+                <label>College Name</label>
+                <input type="text" id="college" placeholder="Enter your college name" required>
+            </div>
+
+            <div class="form-group">
+                <label>Select Year</label>
+                <select id="year" required>
+                    <option value="">-- Select Year --</option>
+                    <option>1st Year</option>
+                    <option>2nd Year</option>
+                    <option>3rd Year</option>
+                    <option>4th Year</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Branch</label>
+                <input type="text" id="branch" placeholder="Enter your branch" required>
+            </div>
+
+            <div class="form-group">
+                <label>Select Event Type</label>
+                <select id="event" required>
+                    <option value="">-- Select --</option>
+                    <option value="Workshop">Workshop</option>
+                    <option value="Seminar">Seminar</option>
+                    <option value="Hackathon">Hackathon</option>
+                </select>
+            </div>
+
+            <button type="submit">Register</button>
+            <button type="reset" class="reset">Clear</button>
+
+        </form>
+
+        <div id="successMessage" class="success"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
