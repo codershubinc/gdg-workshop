@@ -16,6 +16,7 @@ form.addEventListener("submit", async function (e) {
 
     try {
 
+        document.getElementById("submit-btn").innerText = "Submitting...";
         const res = await fetch("http://localhost:5000/register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -31,6 +32,8 @@ form.addEventListener("submit", async function (e) {
 
         successMessage.innerText = "❌ Server Error!";
 
+    } finally {
+        document.getElementById("submit-btn").innerText = "Failed to submit";
     }
 
 });
