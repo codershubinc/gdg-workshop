@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDG Community | Sign In</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="auth.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">GDG<span>Space</span></div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="events.html">Events</a>
+            <a href="auth.html" class="active btn-outline">Sign In</a>
+        </div>
+    </nav>
+
+    <main class="auth-page">
+        <!-- Fluid Background (reuse from hero) -->
+        <div class="auth-fluid-bg">
+            <div class="fluid-blob ab1"></div>
+            <div class="fluid-blob ab2"></div>
+        </div>
+
+        <div class="auth-card" data-tilt>
+            <!-- Buddy -->
+            <div class="buddy-wrapper">
+                <div class="buddy-head">
+                    <div class="buddy-antenna">
+                        <div class="antenna-ball"></div>
+                    </div>
+                    <div class="buddy-face">
+                        <div class="buddy-eye left"></div>
+                        <div class="buddy-eye right"></div>
+                        <div class="buddy-mouth"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Switcher -->
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Login</button>
+                <button class="auth-tab" data-tab="signup">Sign Up</button>
+                <div class="tab-indicator"></div>
+            </div>
+
+            <!-- Login Form -->
+            <div class="auth-form-panel active" id="panel-login">
+                <p class="auth-subtitle">Welcome back, Developer. 👋</p>
+                <form id="form-login">
+                    <div class="input-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" name="email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" name="password" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn-primary auth-submit">Login →</button>
+                    <p class="auth-switch">Don't have an account? <a href="#" data-switch="signup">Sign up here</a></p>
+                </form>
+            </div>
+
+            <!-- Sign Up Form -->
+            <div class="auth-form-panel" id="panel-signup">
+                <p class="auth-subtitle">Join the Global Dev Network. 🚀</p>
+                <form id="form-signup">
+                    <div class="input-group">
+                        <label for="signup-name">Full Name</label>
+                        <input type="text" id="signup-name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" name="email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" name="password"
+                            placeholder="Choose a strong password" required>
+                    </div>
+                    <button type="submit" class="btn-primary auth-submit">Create Account →</button>
+                    <p class="auth-switch">Already a member? <a href="#" data-switch="login">Login here</a></p>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="logo">GDG<span>CSMU</span></div>
+                <p>Official Google Developers Group on Campus at CSMU. Building a community of passionate developers.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><span>🌐</span></a>
+                    <a href="#" class="social-icon"><span>in</span></a>
+                    <a href="#" class="social-icon"><span>📷</span></a>
+                    <a href="#" class="social-icon"><span>✉️</span></a>
+                </div>
+            </div>
+            <div class="footer-links-group">
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">About</a>
+                    <a href="events.html">Events</a>
+                    <a href="auth.html">Join</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <a href="#">Technologies</a>
+                    <a href="#">Community</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 GDG on Campus CSMU. All rights reserved.</p>
+            <div class="built-by">
+                Built & Maintained by
+                <span class="dots">
+                    <span class="dot blue"></span><span class="dot red"></span>
+                    <span class="dot yellow"></span><span class="dot green"></span>
+                </span>
+                <strong>GDG CSMU Technical Team</strong>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        // Tab Switcher Logic
+        const tabs = document.querySelectorAll('.auth-tab');
+        const panels = document.querySelectorAll('.auth-form-panel');
+        const indicator = document.querySelector('.tab-indicator');
+
+        function switchTab(name) {
+            tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+            panels.forEach(p => p.classList.toggle('active', p.id === `panel-${name}`));
+            // Move indicator
+            const activeTab = document.querySelector(`.auth-tab[data-tab="${name}"]`);
+            indicator.style.left = activeTab.offsetLeft + 'px';
+            indicator.style.width = activeTab.offsetWidth + 'px';
+        }
+
+        tabs.forEach(tab => tab.addEventListener('click', () => switchTab(tab.dataset.tab)));
+
+        // Cross-links inside forms
+        document.querySelectorAll('[data-switch]').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                switchTab(link.dataset.switch);
+            });
+        });
+
+        // Set initial indicator position
+        window.addEventListener('load', () => switchTab('login'));
+
+        // Check if coming from signup link
+        if (window.location.hash === '#signup') switchTab('signup');
+    </script>
+</body>
+
+</html>

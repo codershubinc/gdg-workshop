@@ -116,15 +116,118 @@
 
 /* Ensure content is readable */
 .hero-content {
-    max-width: 800px;
+    max-width: 860px;
     animation: fadeUp 0.8s ease-out forwards;
     position: relative;
     z-index: 10;
-    /* Optional: Frosted glass behind text for readability */
-    /* background: rgba(2, 6, 23, 0.2); */
-    /* backdrop-filter: blur(5px); */
     padding: 2rem;
     border-radius: 20px;
+}
+
+/* Hero Badge */
+.hero-badge {
+    display: inline-block;
+    background: rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(99, 102, 241, 0.35);
+    color: #818cf8;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+/* Upcoming Events Strip */
+.hero-events {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.events-label {
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.hero-events-track {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.hero-event-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 50px;
+    padding: 0.45rem 1rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    font-size: 0.83rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.hero-event-pill:hover {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: rgba(99, 102, 241, 0.4);
+    transform: translateY(-2px);
+    color: #c7d2fe;
+}
+
+.pill-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.pill-dot.blue {
+    background: #4285F4;
+    box-shadow: 0 0 6px #4285F4;
+}
+
+.pill-dot.red {
+    background: #EA4335;
+    box-shadow: 0 0 6px #EA4335;
+}
+
+.pill-dot.yellow {
+    background: #FBBC05;
+    box-shadow: 0 0 6px #FBBC05;
+}
+
+.pill-dot.green {
+    background: #34A853;
+    box-shadow: 0 0 6px #34A853;
+}
+
+.pill-date {
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+}
+
+.pill-arrow {
+    color: var(--accent-color);
+    font-size: 0.8rem;
+    transition: transform 0.2s ease;
+}
+
+.hero-event-pill:hover .pill-arrow {
+    transform: translateX(3px);
 }
 
 /* Modern text gradient for the main heading */
@@ -184,18 +287,50 @@
 
 /* --- CARDS --- */
 .feature-card {
-    background: rgba(30, 41, 59, 0.4);
-    /* Semi-transparentish */
+    background: rgba(17, 24, 39, 0.6);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     padding: 2rem;
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    /* Subtle border */
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.6), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.feature-card:hover::before {
+    opacity: 1;
+}
+
+.feature-card:hover {
+    border-color: rgba(99, 102, 241, 0.25);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(99, 102, 241, 0.1);
+    background: rgba(17, 24, 39, 0.85);
+}
+
+.feature-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+.feature-card p {
+    color: var(--text-secondary);
+    line-height: 1.65;
+    font-size: 0.95rem;
 }
 
 /* Glossy Gradient Overlay on Hover */

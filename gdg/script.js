@@ -3,56 +3,65 @@ document.addEventListener('DOMContentLoaded', () => {
     /* --- 0. Boot Animation (Advanced - Restored) --- */
     const preloader = document.getElementById('preloader');
     if (preloader) {
-        const iconScene = document.getElementById('icon-scene');
-        const loadingText = document.getElementById('loading-text');
+        // Check if animation has already played this session
+        if (sessionStorage.getItem('gdgBootShown')) {
+            preloader.style.display = 'none';
+            preloader.remove(); // Remove from DOM entirely
+        } else {
+            const iconScene = document.getElementById('icon-scene');
+            const loadingText = document.getElementById('loading-text');
 
-        // Symbols to cycle
-        const symbols = ['{ ... }', '< / >', '( _ )', '$ _', '#!'];
-        // Messages to cycle
-        const messages = ['System Check...', 'Loading Assets...', 'Compiling Modules...', 'Connecting to GDG...'];
+            // Symbols to cycle
+            const symbols = ['{ ... }', '< / >', '( _ )', '$ _', '#!'];
+            // Messages to cycle
+            const messages = ['System Check...', 'Loading Assets...', 'Compiling Modules...', 'Connecting to GDG...'];
 
-        // Cycle Icons
-        let symbolIndex = 0;
-        const iconInterval = setInterval(() => {
-            symbolIndex = (symbolIndex + 1) % symbols.length;
-            if (iconScene) {
-                // Update content
-                iconScene.innerHTML = `<span class="code-symbol">${symbols[symbolIndex]}</span>`;
+            // Cycle Icons
+            let symbolIndex = 0;
+            const iconInterval = setInterval(() => {
+                symbolIndex = (symbolIndex + 1) % symbols.length;
+                if (iconScene) {
+                    // Update content
+                    iconScene.innerHTML = `<span class="code-symbol">${symbols[symbolIndex]}</span>`;
 
-                // Re-trigger glitch animation
-                const el = iconScene.querySelector('.code-symbol');
-                if (el) {
-                    el.style.animation = 'none';
-                    el.offsetHeight; /* trigger reflow */
-                    el.style.animation = 'glitch 0.4s infinite alternate';
+                    // Re-trigger glitch animation
+                    const el = iconScene.querySelector('.code-symbol');
+                    if (el) {
+                        el.style.animation = 'none';
+                        el.offsetHeight; /* trigger reflow */
+                        el.style.animation = 'glitch 0.4s infinite alternate';
+                    }
                 }
-            }
-        }, 800);
-
-        // Cycle Text
-        let textIndex = 0;
-        const textInterval = setInterval(() => {
-            textIndex = (textIndex + 1) % messages.length;
-            if (loadingText) {
-                loadingText.innerText = messages[textIndex];
-            }
-        }, 900);
-
-        // End Loading Sequence
-        setTimeout(() => {
-            clearInterval(iconInterval);
-            clearInterval(textInterval);
-
-            // Final Success State
-            if (iconScene) iconScene.innerHTML = `<span class="code-symbol" style="color: #4ade80; text-shadow: 0 0 15px #4ade80;">OK</span>`;
-            if (loadingText) loadingText.innerText = 'System Ready.';
-
-            // Fade out
-            setTimeout(() => {
-                preloader.classList.add('fade-out');
-                setTimeout(() => preloader.remove(), 800);
             }, 800);
-        }, 2000);
+
+            // Cycle Text
+            let textIndex = 0;
+            const textInterval = setInterval(() => {
+                textIndex = (textIndex + 1) % messages.length;
+                if (loadingText) {
+                    loadingText.innerText = messages[textIndex];
+                }
+            }, 900);
+
+            // End Loading Sequence
+            setTimeout(() => {
+                clearInterval(iconInterval);
+                clearInterval(textInterval);
+
+                // Final Success State
+                if (iconScene) iconScene.innerHTML = `<span class="code-symbol" style="color: #4ade80; text-shadow: 0 0 15px #4ade80;">OK</span>`;
+                if (loadingText) loadingText.innerText = 'System Ready.';
+
+                // Mark as shown for this session
+                sessionStorage.setItem('gdgBootShown', 'true');
+
+                // Fade out
+                setTimeout(() => {
+                    preloader.classList.add('fade-out');
+                    setTimeout(() => preloader.remove(), 800);
+                }, 800);
+            }, 2000);
+        }
     }
 
     /* --- 1. Toast Notification System --- */
@@ -168,3 +177,25 @@ authContainers.forEach(container => {
     });
 });
 
+
+/* --- 4. Scroll Reveal Animations --- */
+// Run when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+        root: null, // viewport
+        rootMargin: '0px',
+        threshold: 0.1 // Trigger when 10% visible
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // Animate only once
+            }
+        });
+    }, observerOptions);
+
+    const animatedElements = document.querySelectorAll('.feature-card, .event-card');
+    animatedElements.forEach(el => observer.observe(el));
+});
