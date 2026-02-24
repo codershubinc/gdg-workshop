@@ -9,7 +9,8 @@ const app = express();
 app.use(cors({
     origin: [
         "http://127.0.0.1:5500",
-        "https://gdg-workshop-ml2v.vercel.app"
+        "https://gdg-workshop-ml2v.vercel.app",
+        "https://gdgworkshopweb.netlify.app"
     ],
     methods: ["GET", "POST", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
