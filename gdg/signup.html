@@ -19,8 +19,22 @@
             <a href="signup.html" class="active">Sign Up</a>
         </div>
     </nav>
-    <main class="auth-container">
+    <main class="auth-container" data-tilt>
+        <!-- Buddy Animation -->
+        <div class="buddy-wrapper">
+            <div class="buddy-head">
+                <div class="buddy-antenna">
+                    <div class="antenna-ball"></div>
+                </div>
+                <div class="buddy-face">
+                    <div class="buddy-eye left"></div>
+                    <div class="buddy-eye right"></div>
+                    <div class="buddy-mouth"></div>
+                </div>
+            </div>
+        </div>
         <h1>Sign Up</h1>
+        <p class="auth-subtitle">Join the Global Dev Network.</p>
         <form>
             <label for="name">Full Name:</label>
             <input type="text" id="name" name="name" required>
@@ -34,6 +48,52 @@
             <button type="submit">Sign Up</button>
         </form>
     </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="logo">GDG<span>CSMU</span></div>
+                <p>Official Google Developers Group on Campus at CSMU. Building a community of passionate
+                    developers.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><span>🌐</span></a>
+                    <a href="#" class="social-icon"><span>in</span></a>
+                    <a href="#" class="social-icon"><span>📷</span></a>
+                    <a href="#" class="social-icon"><span>✉️</span></a>
+                </div>
+            </div>
+
+            <div class="footer-links-group">
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">About</a>
+                    <a href="events.html">Events</a>
+                    <a href="signup.html">Team</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <a href="#">Technologies</a>
+                    <a href="#">Community</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 GDG on Campus CSMU. All rights reserved.</p>
+            <div class="built-by">
+                Built & Maintained by
+                <span class="dots">
+                    <span class="dot blue"></span>
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </span>
+                <strong>GDG CSMU Technical Team</strong>
+            </div>
+        </div>
+    </footer>
     <script src="script.js"></script>
 </body>
 

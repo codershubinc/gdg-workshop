@@ -11,6 +11,22 @@
 </head>
 
 <body>
+    <!-- BOOT ANIMATION PRELOADER -->
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="icon-wrapper">
+                <div class="icon-scene" id="icon-scene">
+                    <span class="code-symbol">&lt;/&gt;</span>
+                </div>
+            </div>
+
+            <div class="loading-bar">
+                <div class="progress"></div>
+            </div>
+            <p class="loading-text" id="loading-text">Initializing Core...</p>
+        </div>
+    </div>
+
     <nav class="navbar">
         <div class="logo">GDG<span>Space</span></div>
         <div class="nav-links">
@@ -22,9 +38,17 @@
     </nav>
 
     <header class="hero">
+        <!-- Fluid Background Animation -->
+        <div class="hero-fluid-bg">
+            <div class="fluid-blob b1"></div>
+            <div class="fluid-blob b2"></div>
+            <div class="fluid-blob b3"></div>
+        </div>
+
         <div class="hero-content">
             <h1>Build. Learn. <span class="highlight">Connect.</span></h1>
-            <p>Join our community of developers, designers, and tech enthusiasts. Discover new technologies and build
+            <p>Join our community of developers, designers, and tech enthusiasts. Discover new technologies and
+                build
                 the future together.</p>
             <div class="hero-buttons">
                 <a href="events.html" class="btn-primary btn-large">Explore Events</a>
@@ -54,9 +78,49 @@
         </div>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2023 GDG Space. All rights reserved.</p>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="logo">GDG<span>CSMU</span></div>
+                <p>Official Google Developers Group on Campus at CSMU. Building a community of passionate
+                    developers.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><span>🌐</span></a>
+                    <a href="#" class="social-icon"><span>in</span></a>
+                    <a href="#" class="social-icon"><span>📷</span></a>
+                    <a href="#" class="social-icon"><span>✉️</span></a>
+                </div>
+            </div>
+
+            <div class="footer-links-group">
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">About</a>
+                    <a href="events.html">Events</a>
+                    <a href="signup.html">Team</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <a href="#">Technologies</a>
+                    <a href="#">Community</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 GDG on Campus CSMU. All rights reserved.</p>
+            <div class="built-by">
+                Built & Maintained by
+                <span class="dots">
+                    <span class="dot blue"></span>
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </span>
+                <strong>GDG CSMU Technical Team</strong>
+            </div>
         </div>
     </footer>
 

@@ -3,12 +3,21 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    justify-content: flex-start; /* Ensure content starts from top */
+    background: var(--bg-color); /* Fallback */
+}
+
+/* Ensure footer stays at bottom if content is short */
+.footer {
+    margin-top: auto;
+    width: 100%;
 }
 
 .auth-container {
+    flex: 0 0 auto;
     max-width: 450px;
     width: 100%;
-    margin: auto;
+    margin: 8rem auto 4rem; /* Specific margins to coexist with fixed nav */
     background: var(--surface-color);
     padding: 3rem;
     border-radius: 16px;
